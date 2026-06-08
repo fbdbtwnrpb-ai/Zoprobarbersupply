@@ -2,81 +2,162 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zopro Admin Dashboard</title>
+<title>Zopro Admin Inventory</title>
+
 <style>
-body{background:#111;color:white;font-family:Arial;margin:0;padding:20px;}
-h1{color:#d4af37;}
-input,button{width:100%;padding:12px;margin:8px 0;border-radius:6px;border:none;font-size:16px;}
-button{background:#d4af37;color:black;font-weight:bold;}
-.card{background:#1a1a1a;padding:15px;margin:10px 0;border-radius:10px;}
+body{
+background:#111;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+h1{
+color:#d4af37;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#d4af37;
+color:black;
+border:none;
+border-radius:8px;
+font-weight:bold;
+font-size:18px;
+margin-top:10px;
+}
+
+.card{
+background:#1a1a1a;
+padding:15px;
+margin-top:15px;
+border-radius:10px;
+}
+
+img{
+width:100%;
+border-radius:10px;
+margin-top:10px;
+}
 </style>
 </head>
+
 <body>
 
 <h1>Zopro Admin Inventory</h1>
 
-<div id="login">
-<input id="password" type="password" placeholder="Admin Password">
-<button onclick="login()">Login</button>
-</div>
-
-<div id="dashboard" style="display:none;">
-
 <input id="product" placeholder="Product Name">
+
 <input id="qty" placeholder="Quantity">
-<input id="status" placeholder="Status: In Stock / Low / Sold Out">
-<button onclick="addItem()">Add Inventory Item</button>
+
+<input id="price" placeholder="Wholesale Price">
+
+<input id="status" placeholder="In Stock / Low Stock / Sold Out">
+
+<input id="image" placeholder="Image URL">
+
+<button onclick="addItem()">Add Product</button>
 
 <h2>Inventory List</h2>
+
 <div id="list"></div>
 
-</div>
-
 <script>
-let adminPassword = "zopro123";
-let inventory = JSON.parse(localStorage.getItem("inventory")) || [];
 
-function login(){
-  let pass = document.getElementById("password").value;
-  if(pass === adminPassword){
-    document.getElementById("login").style.display="none";
-    document.getElementById("dashboard").style.display="block";
-    showItems();
-  } else {
-    alert("Wrong password");
-  }
-}
+let inventory =
+JSON.parse(localStorage.getItem("inventory"))
+|| [];
 
 function addItem(){
-  let product = document.getElementById("product").value;
-  let qty = document.getElementById("qty").value;
-  let status = document.getElementById("status").value;
 
-  inventory.push({product, qty, status});
-  localStorage.setItem("inventory", JSON.stringify(inventory));
-  showItems();
+let product =
+document.getElementById("product").value;
+
+let qty =
+document.getElementById("qty").value;
+
+let price =
+document.getElementById("price").value;
+
+let status =
+document.getElementById("status").value;
+
+let image =
+document.getElementById("image").value;
+
+inventory.push({
+product,
+qty,
+price,
+status,
+image
+});
+
+localStorage.setItem(
+"inventory",
+JSON.stringify(inventory)
+);
+
+showItems();
 }
 
 function deleteItem(index){
-  inventory.splice(index,1);
-  localStorage.setItem("inventory", JSON.stringify(inventory));
-  showItems();
+
+inventory.splice(index,1);
+
+localStorage.setItem(
+"inventory",
+JSON.stringify(inventory)
+);
+
+showItems();
 }
 
 function showItems(){
-  let list = document.getElementById("list");
-  list.innerHTML = "";
 
-  inventory.forEach((item,index)=>{
-    list.innerHTML += `
-    <div class="card">
-      <h3>${item.product}</h3>
-      <p>Quantity: ${item.qty}</p>
-      <p>Status: ${item.status}</p>
-      <button onclick="deleteItem(${index})">Delete</button>
-    </div>`;
-  });
+let list =
+document.getElementById("list");
+
+list.innerHTML="";
+
+inventory.forEach((item,index)=>{
+
+list.innerHTML += `
+<div class="card">
+
+<h2>${item.product}</h2>
+
+<p><b>Qty:</b> ${item.qty}</p>
+
+<p><b>Price:</b> $${item.price}</p>
+
+<p><b>Status:</b> ${item.status}</p>
+
+<img src="${item.image}">
+
+<button onclick="deleteItem(${index})">
+Delete
+</button>
+
+</div>
+`;
+
+});
+
 }
+
+showItems();
+
 </script>
 
 </body>
