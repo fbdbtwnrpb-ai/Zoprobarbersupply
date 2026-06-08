@@ -73,7 +73,9 @@ placeholder="Search products..."
 onkeyup="searchProducts()"
 style="width:100%;padding:14px;margin-bottom:20px;border-radius:8px;border:none;font-size:18px;"
 >
-
+<button onclick="logout()" style="width:100%;padding:14px;margin-bottom:20px;background:#d4af37;color:black;border:none;border-radius:8px;font-size:18px;font-weight:bold;">
+Logout
+</button>
 <div id="inventory"></div>
 
 </div>
@@ -141,6 +143,10 @@ function searchProducts(){
     let text = card.innerText.toLowerCase();
     card.style.display = text.includes(input) ? "block" : "none";
   });
+}
+  function logout(){
+  localStorage.removeItem("zoproLogin");
+  window.location.href = "login.html";
 }
 </script>
 
