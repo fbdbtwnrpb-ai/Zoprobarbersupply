@@ -91,19 +91,25 @@ if(cols.length >= 5){
 
 html += `
 <div class="card">
-<h2>${cols[0]}</h2>
 
-<p><strong>Qty:</strong> ${cols[1]}</p>
+<h2>${cols[0].replaceAll('"','')}</h2>
+
+<p><strong>Qty:</strong>
+${cols[1].replaceAll('"','')}
+</p>
 
 <p class="price">
-Price: $${cols[2]}
+Price: $
+${cols[2].replaceAll('"','')}
 </p>
 
 <p>
-<strong>Status:</strong> ${cols[3]}
+<strong>Status:</strong>
+${cols[3].replaceAll('"','')}
 </p>
 
-<img src="${cols[4]}" alt="">
+<img src="${cols[4].replaceAll('"','')}" alt="">
+
 </div>
 `;
 
