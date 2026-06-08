@@ -30,9 +30,9 @@ function login(){
 let code = document.getElementById("code").value;
 
 if(code === "zopro123"){
-document.getElementById("content").style.display="block";
-alert("Login successful");
-} else {
+localStorage.setItem("zoproLogin","yes");
+window.location.href = "inventory.html";
+}else{
 alert("Wrong customer code");
 }
 }
