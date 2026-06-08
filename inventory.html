@@ -80,6 +80,9 @@ style="width:100%;padding:14px;margin-bottom:20px;border-radius:8px;border:none;
 
 <script>
 
+  if(localStorage.getItem("zoproLogin") !== "yes"){
+window.location.href = "login.html";
+}
 const csvUrl =
 "https://docs.google.com/spreadsheets/d/1-ix2RF6hd9FUjprQ3XXWtIn6DERgxcnYhOKr7fJsJWs/gviz/tq?tqx=out:csv&sheet=Sheet1";
 
