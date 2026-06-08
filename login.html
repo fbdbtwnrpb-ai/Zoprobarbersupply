@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zopro Customer Login</title>
+<style>
+body{background:#111;color:white;font-family:Arial;padding:25px;}
+h1{color:#d4af37;}
+input,button{width:100%;padding:15px;margin:10px 0;border-radius:8px;border:none;font-size:18px;}
+button{background:#d4af37;color:black;font-weight:bold;}
+.card{background:#1a1a1a;padding:20px;border-radius:12px;margin-top:20px;}
+</style>
+</head>
+<body>
+
+<h1>Customer Login</h1>
+
+<input id="code" type="password" placeholder="Enter customer code">
+
+<button onclick="login()">Login</button>
+
+<div id="content" style="display:none;" class="card">
+<h2>Wholesale Pricing Access</h2>
+<p>You are approved to view wholesale pricing.</p>
+<a href="inventory.html" style="color:#d4af37;font-weight:bold;">View Inventory</a>
+</div>
+
+<script>
+function login(){
+let code = document.getElementById("code").value;
+
+if(code === "zopro123"){
+document.getElementById("content").style.display="block";
+alert("Login successful");
+} else {
+alert("Wrong customer code");
+}
+}
+</script>
+
+</body>
+</html>
