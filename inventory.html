@@ -85,30 +85,32 @@ let html = "";
 
 rows.forEach(row => {
 
-const cols = row.split(",");
+const cols = row.split(",").map(item =>
+item.replace(/^"|"$/g, "").trim()
+);
 
 if(cols.length >= 5){
 
 html += `
 <div class="card">
 
-<h2>${cols[0].replaceAll('"','')}</h2>
+<h2>${cols[0]}</h2>
 
 <p><strong>Qty:</strong>
-${cols[1].replaceAll('"','')}
+${cols[1]}
 </p>
 
 <p class="price">
 Price: $
-${cols[2].replaceAll('"','')}
+${cols[2]}
 </p>
 
 <p>
 <strong>Status:</strong>
-${cols[3].replaceAll('"','')}
+${cols[3]}
 </p>
 
-<img src="${cols[4].replaceAll('"','')}" alt="">
+${cols[4]}
 
 </div>
 `;
