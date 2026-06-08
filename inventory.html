@@ -109,8 +109,14 @@ html += `
 
 <h2>${cols[0]}</h2>
 
-<p><strong>Qty:</strong>
-${cols[1]}
+<p>
+<strong>Status:</strong>
+${cols[3]}
+</p>
+
+<p>
+<strong>Category:</strong>
+${cols[5]}
 </p>
 
 <p class="price">
@@ -118,10 +124,7 @@ Price: $
 ${cols[2]}
 </p>
 
-<p>
-<strong>Status:</strong>
-${cols[3]}
-</p>
+
 <a href="sms:5013137716?body=Hi ZO Pro,%0A%0AProduct: ${cols[0]}%0AQuantity:%0ABarbershop Name:%0ADelivery City:%0A%0AThank you.">
 style="display:block;background:#d4af37;color:black;text-align:center;padding:14px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:15px;">
 Order Now
